@@ -7,7 +7,7 @@ print("--- Sistem Kontrolü Başlıyor ---")
 for tool in tools:
     path = shutil.which(tool)
     if path:
-        # Versiyon bilgisini de al
+        # Versiyon bilgisi
         try:
             version = subprocess.check_output([tool, "--version"], 
                        stderr=subprocess.STDOUT).decode().split("\n")[0]
