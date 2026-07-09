@@ -1,0 +1,18 @@
+import shutil
+import subprocess
+
+tools = ["nmap", "msfconsole", "python3", "git", "docker", "burpsuite"]
+
+print("--- Sistem Kontrolü Başlıyor ---")
+for tool in tools:
+    path = shutil.which(tool)
+    if path:
+        # Versiyon bilgisini de al
+        try:
+            version = subprocess.check_output([tool, "--version"], 
+                       stderr=subprocess.STDOUT).decode().split("\n")[0]
+            print(f"[+] {tool} kurulu: {path} | Versiyon: {version}")
+        except:
+            print(f"[+] {tool} kurulu: {path}")
+    else:
+        print(f"[-] {tool} bulunmadi!")
